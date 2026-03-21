@@ -16,88 +16,111 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body data-page="gallery">
     <div class="site-shell">
-      <header class="site-header">
-        <div class="container nav-wrap">
-          <a class="brand" href="index.html">
-            <span class="brand-mark">S</span>
-            <span><strong>Shauntelle</strong><small>Weddings &amp; Events</small></span>
-          </a>
-          <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
-          <nav class="site-nav" id="site-nav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a class="active" href="gallery.html">Gallery</a>
-            <a href="contact.html">Contact</a>
-          </nav>
+      <div data-include="partials/header.html"></div>
+
+<main>
+  <section class="page-hero page-hero-light">
+    <div class="container hero-wide">
+      <p class="eyebrow">Gallery</p>
+      <h1>A wider look at the details, textures, and moments that shape each celebration.</h1>
+      <p class="lead">
+        This gallery keeps the page design intact while using a full width image rail for a more immersive portfolio.
+        Click any image to open it larger, then exit to return to the page.
+      </p>
+    </div>
+  </section>
+
+  <section class="section gallery-page-section">
+    <div class="gallery-rail-shell" data-gallery-rail>
+      <button class="carousel-button gallery-rail-button prev" type="button" aria-label="Previous gallery images" data-gallery-rail-prev>&larr;</button>
+      <div class="gallery-rail-window">
+        <div class="gallery-rail-grid" data-gallery>
+          <button class="gallery-thumb is-active" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Ceremony moment">
+              <img src="assets/gallery-placeholder.svg" alt="Ceremony moment" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Stationery details">
+              <img src="assets/gallery-placeholder.svg" alt="Stationery details" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Celebration with pet">
+              <img src="assets/gallery-placeholder.svg" alt="Celebration with pet" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Outdoor ceremony">
+              <img src="assets/gallery-placeholder.svg" alt="Outdoor ceremony" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Table styling">
+              <img src="assets/gallery-placeholder.svg" alt="Table styling" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Bridal portrait">
+              <img src="assets/gallery-placeholder.svg" alt="Bridal portrait" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Floral arch">
+              <img src="assets/gallery-placeholder.svg" alt="Floral arch" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Ceremony aisle">
+              <img src="assets/gallery-placeholder.svg" alt="Ceremony aisle" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Reception tent">
+              <img src="assets/gallery-placeholder.svg" alt="Reception tent" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Ceremony cross">
+              <img src="assets/gallery-placeholder.svg" alt="Ceremony cross" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Black and white ceremony">
+              <img src="assets/gallery-placeholder.svg" alt="Black and white ceremony" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Cake detail">
+              <img src="assets/gallery-placeholder.svg" alt="Cake detail" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Couple portrait">
+              <img src="assets/gallery-placeholder.svg" alt="Couple portrait" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Bridal bouquet">
+              <img src="assets/gallery-placeholder.svg" alt="Bridal bouquet" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Ceremony flowers">
+              <img src="assets/gallery-placeholder.svg" alt="Ceremony flowers" />
+            </button>
+<button class="gallery-thumb" type="button" data-gallery-thumb data-full="assets/gallery-placeholder.svg" aria-label="Open Fountain florals">
+              <img src="assets/gallery-placeholder.svg" alt="Fountain florals" />
+            </button>
         </div>
-      </header>
+      </div>
+      <button class="carousel-button gallery-rail-button next" type="button" aria-label="Next gallery images" data-gallery-rail-next>&rarr;</button>
+    </div>
+  </section>
 
-      <main>
-        <section class="page-hero page-hero-light">
-          <div class="container narrow">
-            <p class="eyebrow">Gallery</p>
-            <h1>A dedicated space for wedding inspiration, décor details, and event imagery.</h1>
-            <p class="lead">
-              Replace these artful placeholders with Shauntelle’s strongest wedding, shower, floral, and styling
-              images for a more premium portfolio presentation.
-            </p>
-          </div>
-        </section>
+  <section class="section section-soft">
+    <div class="container two-column-story">
+      <div class="story-panel">
+        <h2>Built for a larger visual presentation</h2>
+        <p>
+          The gallery now spans the page more generously so each image feels more substantial. You can continue adding
+          as many images as needed by duplicating the same thumbnail structure and swapping in the real files.
+        </p>
+      </div>
+      <div class="story-panel">
+        <h2>How it works</h2>
+        <p>
+          Visitors can browse the full width gallery on the page, click any image to open it larger, move through the
+          images one by one, and close the lightbox to return to the regular page again.
+        </p>
+      </div>
+    </div>
+  </section>
 
-        <section class="section">
-          <div class="container">
-            <div class="masonry-grid">
-              <div class="gallery-tile tile-one"><span>Wedding Styling</span></div>
-              <div class="gallery-tile tile-two"><span>Tablescapes</span></div>
-              <div class="gallery-tile tile-three"><span>Florals</span></div>
-              <div class="gallery-tile tile-four"><span>Backdrops</span></div>
-              <div class="gallery-tile tile-five"><span>Proposal Setup</span></div>
-              <div class="gallery-tile tile-six"><span>Reception Details</span></div>
-              <div class="gallery-tile tile-seven"><span>Celebration Moments</span></div>
-              <div class="gallery-tile tile-eight"><span>Client Experience</span></div>
-            </div>
-          </div>
-        </section>
+  <div class="lightbox" data-lightbox hidden>
+    <button class="lightbox-close" type="button" aria-label="Close gallery" data-lightbox-close>&times;</button>
+    <button class="lightbox-nav prev" type="button" aria-label="Previous image" data-lightbox-prev>&larr;</button>
+    <div class="lightbox-image-wrap">
+      <img src="assets/gallery-placeholder.svg" alt="Gallery image" data-lightbox-image />
+    </div>
+    <button class="lightbox-nav next" type="button" aria-label="Next image" data-lightbox-next>&rarr;</button>
+  </div>
+</main>
 
-        <section class="section section-soft">
-          <div class="container note-panel">
-            <p class="eyebrow">Photo directions</p>
-            <h2>Best practice for final gallery curation</h2>
-            <p>
-              Use a mix of wide venue shots, medium detail shots, florals, tables, signage, and guest-facing
-              moments. Keep image tones consistent for a more editorial and luxury feel.
-            </p>
-          </div>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <div class="container footer-grid">
-          <div>
-            <a class="brand footer-brand" href="index.html">
-              <span class="brand-mark">S</span>
-              <span><strong>Shauntelle</strong><small>Weddings &amp; Events</small></span>
-            </a>
-            <p class="footer-copy">Elegant wedding coordination and celebration styling.</p>
-          </div>
-          <div>
-            <p class="footer-label">Explore</p>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="contact.html">Contact</a>
-          </div>
-          <div>
-            <p class="footer-label">Connect</p>
-            <a href="tel:5307225676">530-722-5676</a>
-            <a href="mailto:hello@shauntelleweddingsandevents.com">hello@shauntelleweddingsandevents.com</a>
-            <span>Serving Shasta County &amp; surrounding areas</span>
-          </div>
-        </div>
-      </footer>
+      <div data-include="partials/footer.html"></div>
     </div>
 
     <script src="script.js"></script>

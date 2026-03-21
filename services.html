@@ -16,138 +16,132 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body data-page="services">
     <div class="site-shell">
-      <header class="site-header">
-        <div class="container nav-wrap">
-          <a class="brand" href="index.html">
-            <span class="brand-mark">S</span>
-            <span><strong>Shauntelle</strong><small>Weddings &amp; Events</small></span>
-          </a>
-          <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
-          <nav class="site-nav" id="site-nav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a class="active" href="services.html">Services</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="contact.html">Contact</a>
-          </nav>
-        </div>
-      </header>
+      <div data-include="partials/header.html"></div>
 
-      <main>
-        <section class="page-hero">
-          <div class="container narrow">
-            <p class="eyebrow">Services</p>
-            <h1>Flexible planning, elegant styling, and support that meets clients where they are.</h1>
-            <p class="lead">
-              This page organizes the current one-page service list into clear categories that are easier to scan.
-            </p>
-          </div>
-        </section>
+<main>
+  <section class="page-hero">
+    <div class="container hero-wide">
+      <p class="eyebrow">Services</p>
+      <h1>Flexible support for weddings, celebrations, and beautifully styled moments.</h1>
+      <p class="lead">
+        From planning and coordination to florals, grazing tables, backdrops, and photography, each service is
+        designed to help your event feel cohesive, personal, and thoughtfully executed.
+      </p>
+    </div>
+  </section>
 
-        <section class="section">
-          <div class="container stacked-service-list">
-            <article class="service-row">
-              <div>
-                <p class="service-tag">Weddings</p>
-                <h2>Wedding Day &amp; Month-of Coordination</h2>
-              </div>
-              <p>
-                Vendor coordination, timeline oversight, ceremony and reception flow, issue resolution, and a calm
-                presence from setup through key moments of the day.
-              </p>
-            </article>
-            <article class="service-row">
-              <div>
-                <p class="service-tag">Design</p>
-                <h2>Full Event Design &amp; Décor</h2>
-              </div>
-              <p>
-                Cohesive styling support for weddings, showers, birthdays, and milestone events with décor
-                inventory, tablescapes, centerpieces, and visual planning.
-              </p>
-            </article>
-            <article class="service-row">
-              <div>
-                <p class="service-tag">Custom Styling</p>
-                <h2>Balloons, Backdrops, and Statement Installs</h2>
-              </div>
-              <p>
-                Photo-worthy design moments including shimmer walls, balloon installs, custom accents, and layered
-                backdrops that elevate the room.
-              </p>
-            </article>
-            <article class="service-row">
-              <div>
-                <p class="service-tag">Details</p>
-                <h2>Florals, Tablescapes, and Centerpieces</h2>
-              </div>
-              <p>
-                Fresh or faux florals, romantic table styling, centerpiece creation, and elevated details that help
-                each event feel complete.
-              </p>
-            </article>
-            <article class="service-row">
-              <div>
-                <p class="service-tag">Celebrations</p>
-                <h2>Proposal Setups, Showers, and Special Events</h2>
-              </div>
-              <p>
-                Intimate or statement-making setups tailored for proposals, baby showers, birthdays, and family
-                milestones.
-              </p>
-            </article>
-            <article class="service-row">
-              <div>
-                <p class="service-tag">Extras</p>
-                <h2>Inventory Rentals &amp; Grazing Tables</h2>
-              </div>
-              <p>
-                Selected décor rentals, curated tabletop pieces, and grazing or charcuterie styling for an added
-                layer of hospitality.
-              </p>
-            </article>
-          </div>
-        </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">My Services</p>
+        <h2>A full range of event planning, design, and celebration services.</h2>
+      </div>
+      <div class="services-grid">
+        <article class="service-card">
+  <img src="assets/Venue-Selection.avif" alt="Venue Selection" />
+  <div class="service-card-copy">
+    <h3>Venue Selection</h3>
+    <p>I work closely with you to find a venue that matches your style, budget, and overall vision. I will research options, schedule walkthroughs, and support you through every step of choosing the right venue for your event.</p>
+  </div>
+</article>
+<article class="service-card">
+  <img src="assets/Vendor-Management.avif" alt="Vendor Management" />
+  <div class="service-card-copy">
+    <h3>Vendor Management</h3>
+    <p>Whether it is a wedding or a celebration, I coordinate with vendors, confirm details, and make sure everyone is aligned leading up to and on event day.</p>
+  </div>
+</article>
+<article class="service-card">
+  <img src="assets/Balloons-and-Backdrops.avif" alt="Balloons and Backdrops" />
+  <div class="service-card-copy">
+    <h3>Balloons and Backdrops</h3>
+    <p>Custom balloon installs, shimmer walls, accent backdrops, and statement pieces designed to elevate your event and create memorable photo moments for weddings, showers, birthdays, and celebrations.</p>
+  </div>
+</article>
+<article class="service-card">
+  <img src="assets/Event-Design.avif" alt="Event Design" />
+  <div class="service-card-copy">
+    <h3>Event Design</h3>
+    <p>I create event designs that reflect your personal aesthetic and bring together the details needed to transform your venue into a beautiful, cohesive setting.</p>
+  </div>
+</article>
+<article class="service-card">
+  <img src="assets/Wedding-Day.avif" alt="Wedding Day and Month-of Coordination" />
+  <div class="service-card-copy">
+    <h3>Wedding Day and Month-of Coordination</h3>
+    <p>On your wedding day, I coordinate vendors, manage the timeline, solve problems quietly, and make sure every detail moves according to plan so you can stay present and enjoy the moment.</p>
+  </div>
+</article>
+<article class="service-card">
+  <img src="assets/Proposal-Setups.avif" alt="Proposal Setups" />
+  <div class="service-card-copy">
+    <h3>Proposal Setups</h3>
+    <p>Custom backdrops, balloon installs, candles, florals, and decor arranged to create a picture perfect proposal scene tailored to your vision.</p>
+  </div>
+</article>
+<article class="service-card">
+  <img src="assets/Florals.avif" alt="Florals" />
+  <div class="service-card-copy">
+    <h3>Florals</h3>
+    <p>Custom floral arrangements designed to complement your event. Faux and fresh options are available for weddings and celebrations.</p>
+  </div>
+</article>
+<article class="service-card">
+  <img src="assets/Full-Event.avif" alt="Full Event Design and Decor" />
+  <div class="service-card-copy">
+    <h3>Full Event Design and Decor</h3>
+    <p>I bring your vision to life through personalized design plans, curated decor selections, and access to a variety of inventory.</p>
+  </div>
+</article>
+<article class="service-card">
+  <img src="assets/Charcuterie-Board-and-Grazing-Tables.avif" alt="Charcuterie Board and Grazing Tables" />
+  <div class="service-card-copy">
+    <h3>Charcuterie Board and Grazing Tables</h3>
+    <p>I create charcuterie boards and grazing tables with materials, shopping, preparation, and setup included in the service.</p>
+  </div>
+</article>
+<article class="service-card">
+  <img src="assets/Centerpieces-and-Tablescapes.avif" alt="Centerpieces and Tablescapes" />
+  <div class="service-card-copy">
+    <h3>Centerpieces and Tablescapes</h3>
+    <p>I create centerpieces and full tablescapes for weddings, showers, and celebrations of all kinds.</p>
+  </div>
+</article>
+<article class="service-card">
+  <img src="assets/Inventory.avif" alt="Inventory" />
+  <div class="service-card-copy">
+    <h3>Inventory</h3>
+    <p>When you book my services, you have access to my event inventory at no additional cost. A refundable deposit covers lost or damaged items, and select pieces can also be rented separately.</p>
+  </div>
+</article>
+<article class="service-card">
+  <img src="assets/Photography.avif" alt="Photography" />
+  <div class="service-card-copy">
+    <h3>Photography</h3>
+    <p>Photography can be requested for weddings, senior portraits, family photos, and other occasions.</p>
+  </div>
+</article>
+      </div>
+    </div>
+  </section>
 
-        <section class="section section-soft">
-          <div class="container note-panel">
-            <p class="eyebrow">Pricing note</p>
-            <h2>Keep services flexible without looking vague.</h2>
-            <p>
-              Once pricing is finalized, this page can support either starting prices or a “custom proposal” model.
-              The design is already prepared for either approach.
-            </p>
-            <a class="btn btn-primary" href="contact.html">Request a Custom Quote</a>
-          </div>
-        </section>
-      </main>
+  <section class="section section-soft">
+    <div class="container note-panel">
+      <p class="eyebrow">Inventory access</p>
+      <h2>Thoughtful design support with more built in value.</h2>
+      <p>
+        When you book services with Shauntelle Weddings &amp; Events, you also receive access to available event
+        inventory at no additional cost. A refundable deposit covers lost or damaged items, and select pieces can
+        also be rented separately.
+      </p>
+      <a class="btn btn-primary" href="contact.html">Request a Custom Quote</a>
+    </div>
+  </section>
+</main>
 
-      <footer class="site-footer">
-        <div class="container footer-grid">
-          <div>
-            <a class="brand footer-brand" href="index.html">
-              <span class="brand-mark">S</span>
-              <span><strong>Shauntelle</strong><small>Weddings &amp; Events</small></span>
-            </a>
-            <p class="footer-copy">Elegant wedding coordination and celebration styling.</p>
-          </div>
-          <div>
-            <p class="footer-label">Explore</p>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="contact.html">Contact</a>
-          </div>
-          <div>
-            <p class="footer-label">Connect</p>
-            <a href="tel:5307225676">530-722-5676</a>
-            <a href="mailto:hello@shauntelleweddingsandevents.com">hello@shauntelleweddingsandevents.com</a>
-            <span>Serving Shasta County &amp; surrounding areas</span>
-          </div>
-        </div>
-      </footer>
+      <div data-include="partials/footer.html"></div>
     </div>
 
     <script src="script.js"></script>
