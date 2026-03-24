@@ -47,6 +47,11 @@ function initGalleryRail() {
     return window.innerWidth <= 640 ? 2 : 4;
   }
 
+  // Keeps the original rail layout, but lets the rail wrap back to the beginning/end.
+  function maxPage() {
+    return Math.max(0, thumbs.length - itemsPerPage());
+  }
+
   function updateRailPosition() {
     const firstItem = thumbs[0];
     if (!firstItem) return;
@@ -76,15 +81,14 @@ function initGalleryRail() {
   });
 
   prev?.addEventListener('click', () => {
-    const maxPage = Math.max(0, thumbs.length - itemsPerPage());
-    pageIndex = Math.max(0, pageIndex - itemsPerPage());
-    pageIndex = Math.min(pageIndex, maxPage);
+    const max = maxPage();
+    pageIndex = pageIndex <= 0 ? max : Math.max(0, pageIndex - itemsPerPage());
     updateRailPosition();
   });
 
   next?.addEventListener('click', () => {
-    const maxPage = Math.max(0, thumbs.length - itemsPerPage());
-    pageIndex = Math.min(maxPage, pageIndex + itemsPerPage());
+    const max = maxPage();
+    pageIndex = pageIndex >= max ? 0 : Math.min(max, pageIndex + itemsPerPage());
     updateRailPosition();
   });
 
