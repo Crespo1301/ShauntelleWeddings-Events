@@ -75,16 +75,16 @@ function initGalleryRail() {
     });
   });
 
+  // Keep the original gallery rail layout, but let the arrows loop.
   prev?.addEventListener('click', () => {
     const maxPage = Math.max(0, thumbs.length - itemsPerPage());
-    pageIndex = Math.max(0, pageIndex - itemsPerPage());
-    pageIndex = Math.min(pageIndex, maxPage);
+    pageIndex = pageIndex <= 0 ? maxPage : Math.max(0, pageIndex - itemsPerPage());
     updateRailPosition();
   });
 
   next?.addEventListener('click', () => {
     const maxPage = Math.max(0, thumbs.length - itemsPerPage());
-    pageIndex = Math.min(maxPage, pageIndex + itemsPerPage());
+    pageIndex = pageIndex >= maxPage ? 0 : Math.min(maxPage, pageIndex + itemsPerPage());
     updateRailPosition();
   });
 
