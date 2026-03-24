@@ -51,7 +51,18 @@ function initGalleryRail() {
     const firstItem = thumbs[0];
     if (!firstItem) return;
     const itemWidth = firstItem.getBoundingClientRect().width;
-    const gap = 11.2;
+    // Read gap from CSS variable or computed style for maintainability
+    let gap = 0;
+    const railStyles = window.getComputedStyle(rail);
+    // Try to read from CSS variable first, fallback to column-gap or gap
+    const cssGap = railStyles.getPropertyValue('--gallery-gap') ||
+                   railStyles.getPropertyValue('column-gap') ||
+                   railStyles.getPropertyValue('gap');
+    if (cssGap) {
+      gap = parseFloat(cssGap);
+    } else {
+      gap = 11.2; // fallback to default if not found
+    }
     rail.style.transform = `translateX(-${pageIndex * (itemWidth + gap)}px)`;
   }
 
@@ -75,18 +86,18 @@ function initGalleryRail() {
     });
   });
 
-  // Keep the original gallery rail layout, but let the arrows loop.
-  prev?.addEventListener('click', () => {
-    const maxPage = Math.max(0, thumbs.length - itemsPerPage());
-    pageIndex = pageIndex <= 0 ? maxPage : Math.max(0, pageIndex - itemsPerPage());
-    updateRailPosition();
-  });
+    // Keep the original gallery rail layout, but let the arrows loop.
+    prev?.addEventListener('click', () => {
+      const maxPage = Math.max(0, thumbs.length - itemsPerPage());
+      pageIndex = pageIndex <= 0 ? maxPage : Math.max(0, pageIndex - itemsPerPage());
+      updateRailPosition();
+    });
 
-  next?.addEventListener('click', () => {
-    const maxPage = Math.max(0, thumbs.length - itemsPerPage());
-    pageIndex = pageIndex >= maxPage ? 0 : Math.min(maxPage, pageIndex + itemsPerPage());
-    updateRailPosition();
-  });
+    next?.addEventListener('click', () => {
+      const maxPage = Math.max(0, thumbs.length - itemsPerPage());
+      pageIndex = pageIndex >= maxPage ? 0 : Math.min(maxPage, pageIndex + itemsPerPage());
+      updateRailPosition();
+    });
 
   lightboxPrev?.addEventListener('click', () => setActive(currentIndex - 1));
   lightboxNext?.addEventListener('click', () => setActive(currentIndex + 1));
