@@ -47,11 +47,6 @@ function initGalleryRail() {
     return window.innerWidth <= 640 ? 2 : 4;
   }
 
-  // Comment: keep the original gallery rail layout, but allow the arrows to loop.
-  function maxPage() {
-    return Math.max(0, thumbs.length - itemsPerPage());
-  }
-
   function updateRailPosition() {
     const firstItem = thumbs[0];
     if (!firstItem) return;
@@ -81,20 +76,20 @@ function initGalleryRail() {
   });
 
   prev?.addEventListener('click', () => {
-    const max = maxPage();
-    pageIndex = pageIndex <= 0 ? max : Math.max(0, pageIndex - itemsPerPage());
+    const maxPage = Math.max(0, thumbs.length - itemsPerPage());
+    pageIndex = Math.max(0, pageIndex - itemsPerPage());
+    pageIndex = Math.min(pageIndex, maxPage);
     updateRailPosition();
   });
 
   next?.addEventListener('click', () => {
-    const max = maxPage();
-    pageIndex = pageIndex >= max ? 0 : Math.min(max, pageIndex + itemsPerPage());
+    const maxPage = Math.max(0, thumbs.length - itemsPerPage());
+    pageIndex = Math.min(maxPage, pageIndex + itemsPerPage());
     updateRailPosition();
   });
 
   lightboxPrev?.addEventListener('click', () => setActive(currentIndex - 1));
   lightboxNext?.addEventListener('click', () => setActive(currentIndex + 1));
-
   lightboxClose?.addEventListener('click', () => {
     if (!lightbox) return;
     lightbox.hidden = true;
