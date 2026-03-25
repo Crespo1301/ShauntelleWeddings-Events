@@ -1006,21 +1006,33 @@ body.nav-open {
   overflow: hidden;
 }
 
-/* Service card alignment stays intact while improving consistency */
+/* === Service card alignment (clean fix) === */
 .services-grid {
   align-items: stretch;
 }
 
 .service-card {
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
 .service-card-copy {
-  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.35rem; /* natural spacing */
 }
 
+/* KEY FIX: remove fake spacing */
 .service-card-copy h3 {
-  line-height: 1.15;
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+/* ALIGNMENT MAGIC */
+.service-card-copy p {
+  margin-top: auto;
 }
 
 /* Gallery polish */
