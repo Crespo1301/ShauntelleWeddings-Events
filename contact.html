@@ -1,23 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- SEO + social sharing -->
-<meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#f8f2ec" />
-<link rel="canonical" href="https://shauntelleweddingsandevents.com/contact.html" />
-<meta property="og:site_name" content="Shauntelle Weddings &amp; Events" />
-<meta property="og:title" content="Contact | Shauntelle Weddings & Events" />
-<meta property="og:description" content="Contact Shauntelle Weddings & Events to inquire about wedding planning, event coordination, florals, and celebration styling." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://shauntelleweddingsandevents.com/contact.html" />
-<meta property="og:image" content="https://shauntelleweddingsandevents.com/assets/social-preview-placeholder.jpg" />
-<meta property="og:image:alt" content="Shauntelle Weddings &amp; Events website preview" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Contact | Shauntelle Weddings & Events" />
-<meta name="twitter:description" content="Contact Shauntelle Weddings & Events to inquire about wedding planning, event coordination, florals, and celebration styling." />
-<meta name="twitter:image" content="https://shauntelleweddingsandevents.com/assets/social-preview-placeholder.jpg" />
     <title>Contact | Shauntelle Weddings & Events</title>
     <meta
       name="description"
@@ -35,93 +21,127 @@
     <div class="site-shell">
       <div data-include="partials/header.html"></div>
 
-<main>
-  <section class="page-hero">
-    <div class="container hero-wide">
-      <p class="eyebrow">Contact</p>
-      <h1>Begin with an inquiry that feels simple, warm, and personal.</h1>
-      <p class="lead">
-        Share the kind of celebration you are planning, the support you need, and the vision you want to bring to
-        life. This page is ready for your final form integration.
-      </p>
-    </div>
-  </section>
+      <main>
+        <!--
+          PAGE NOTE:
+          This contact page is visually complete, but the form still needs a live form endpoint
+          before it will deliver inquiries. The recommended low-maintenance option for this static
+          website is Formspree.
 
-  <section class="section">
-    <div class="container contact-grid">
-      <div class="contact-panel">
-        <p class="eyebrow">Let’s create something unforgettable</p>
-        <h2>Thoughtful support for meaningful milestones.</h2>
-        <p>
-          Whether you are planning a wedding, proposal, shower, birthday, or another celebration, Shauntelle Weddings
-          &amp; Events offers personalized guidance, styling, and coordination tailored to your day.
-        </p>
-        <div class="contact-details">
-          <a href="tel:5307225676">530-722-5676</a>
-          <a href="mailto:hello@shauntelleweddingsandevents.com">hello@shauntelleweddingsandevents.com</a>
-          <span>Serving Shasta County and surrounding areas</span>
-        </div>
-      </div>
+          To activate the form later:
+          1. Create a form in Formspree
+          2. Replace REPLACE_WITH_YOUR_FORM_ID in the form action below
+          3. Update the _next value if you want a custom thank-you page
+        -->
+        <section class="page-hero">
+          <div class="container hero-wide">
+            <p class="eyebrow">Contact</p>
+            <h1>Begin with an inquiry that feels simple, warm, and personal.</h1>
+            <p class="lead">
+              Share the kind of celebration you are planning, the support you need, and the vision you want to bring to
+              life. This page is ready for your final form integration.
+            </p>
+          </div>
+        </section>
 
-      <form class="contact-form" action="#" method="post">
-        <label>
-          Full Name
-          <input type="text" name="name" placeholder="Your name" />
-        </label>
-        <label>
-          Email Address
-          <input type="email" name="email" placeholder="you@example.com" />
-        </label>
-        <label>
-          Event Type
-          <select name="eventType">
-            <option>Wedding</option>
-            <option>Proposal</option>
-            <option>Baby Shower</option>
-            <option>Birthday Celebration</option>
-            <option>Other Event</option>
-          </select>
-        </label>
-        <label>
-          Event Date
-          <input type="text" name="eventDate" placeholder="Month / Year or exact date" />
-        </label>
-        <label>
-          Estimated Guest Count
-          <input type="text" name="guestCount" placeholder="Approximate number of guests" />
-        </label>
-        <label>
-          Tell us about your vision
-          <textarea name="message" rows="6" placeholder="Share your ideas, venue, style, and support needed."></textarea>
-        </label>
-        <button class="btn btn-primary" type="submit">Send Inquiry</button>
-      </form>
-    </div>
-  </section>
+        <section class="section">
+          <div class="container contact-grid">
+            <div class="contact-panel">
+              <p class="eyebrow">Let’s create something unforgettable</p>
+              <h2>Thoughtful support for meaningful milestones.</h2>
+              <p>
+                Whether you are planning a wedding, proposal, shower, birthday, or another celebration, Shauntelle Weddings
+                &amp; Events offers personalized guidance, styling, and coordination tailored to your day.
+              </p>
+              <div class="contact-details">
+                <a href="tel:5307225676">530-722-5676</a>
+                <a href="mailto:shauntelleweddingsandevents@gmail.com">shauntelleweddingsandevents@gmail.com</a>
+                <span>Serving Shasta County and surrounding areas</span>
+              </div>
+            </div>
 
-  <section class="section section-soft">
-    <div class="container two-column-story">
-      <div class="story-panel">
-        <h2>What to include in your inquiry</h2>
-        <p>
-          The date, venue if known, event type, estimated guest count, and the kind of support you are looking for
-          will help shape the next conversation and make the response more helpful from the start.
-        </p>
-      </div>
-      <div class="story-panel">
-        <h2>Services clients often ask about</h2>
-        <p>
-          Venue selection, vendor management, wedding day coordination, florals, tablescapes, backdrops, full event
-          design, grazing tables, inventory access, and proposal setups are all available to discuss through the
-          inquiry process.
-        </p>
-      </div>
-    </div>
-  </section>
-</main>
+            <!--
+              FORM INTEGRATION:
+              This form is set up for a static-site workflow and is ready for Formspree.
+              Replace REPLACE_WITH_YOUR_FORM_ID with the real Formspree endpoint when ready.
 
-      <div data-include="partials/footer.html"></div>
-    </div>
+              Example:
+              action="https://formspree.io/f/abcd1234"
+            -->
+            <form
+              class="contact-form"
+              action="https://formspree.io/f/xykbyyvj"
+              method="post"
+              accept-charset="UTF-8"
+            >
+              <!-- Change the subject line sent to the inbox -->
+              <input type="hidden" name="_subject" value="New Shauntelle Weddings &amp; Events inquiry" />
+              <!-- Optional redirect after successful submission -->
+              <input type="hidden" name="_next" value="https://shauntelleweddingsandevents.com/contact.html?submitted=true" />
+              <!-- Honeypot field to reduce simple spam bots -->
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" />
+              <label>
+                Full Name
+                <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
+              </label>
+              <label>
+                Email Address
+                <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+              </label>
+              <label>
+                Event Type
+                <select name="eventType" required>
+                  <option>Wedding</option>
+                  <option>Proposal</option>
+                  <option>Baby Shower</option>
+                  <option>Birthday Celebration</option>
+                  <option>Other Event</option>
+                </select>
+              </label>
+              <label>
+                Event Date
+                <input type="text" name="eventDate" placeholder="Month / Year or exact date" autocomplete="off" required />
+              </label>
+              <label>
+                Estimated Guest Count
+                <input type="text" name="guestCount" placeholder="Approximate number of guests" inputmode="numeric" />
+              </label>
+              <label>
+                Tell us about your vision
+                <textarea name="message" rows="6" placeholder="Share your ideas, venue, style, and support needed." required></textarea>
+              </label>
+              <!--
+                EDITING NOTE:
+                Button text can be changed safely without affecting functionality.
+              -->
+              <button class="btn btn-primary" type="submit">Send Inquiry</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="section section-soft">
+          <div class="container two-column-story">
+            <div class="story-panel">
+              <h2>What to include in your inquiry</h2>
+              <p>
+                The date, venue if known, event type, estimated guest count, and the kind of support you are looking for
+                will help shape the next conversation and make the response more helpful from the start.
+              </p>
+            </div>
+            <div class="story-panel">
+              <h2>Services clients often ask about</h2>
+              <p>
+                Venue selection, vendor management, wedding day coordination, florals, tablescapes, backdrops, full event
+                design, grazing tables, inventory access, and proposal setups are all available to discuss through the
+                inquiry process.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+            <div data-include="partials/footer.html"></div>
+          </div>
 
     <script src="script.js"></script>
   </body>
