@@ -14,9 +14,29 @@ function initNavigation() {
   const siteNav = document.querySelector('.site-nav');
 
   if (menuToggle && siteNav) {
+    // Mobile nav toggle with body lock for cleaner small-screen behavior
     menuToggle.addEventListener('click', () => {
       const isOpen = siteNav.classList.toggle('open');
       menuToggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('nav-open', isOpen);
+    });
+
+    // Close the menu after a navigation selection on mobile
+    siteNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      });
+    });
+
+    // Escape key support for accessibility
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        siteNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      }
     });
   }
 

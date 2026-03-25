@@ -996,3 +996,161 @@ img {
     height: 2.9rem;
   }
 }
+
+/* ==================================================
+   Incremental polish: SEO-friendly UX, mobile nav,
+   image performance helpers, and gallery refinement
+   ================================================== */
+
+body.nav-open {
+  overflow: hidden;
+}
+
+/* Service card alignment stays intact while improving consistency */
+.services-grid {
+  align-items: stretch;
+}
+
+.service-card {
+  height: 100%;
+}
+
+.service-card-copy {
+  min-width: 0;
+}
+
+.service-card-copy h3 {
+  line-height: 1.15;
+}
+
+/* Gallery polish */
+.gallery-rail-grid {
+  --gallery-gap: 11.2px;
+  gap: var(--gallery-gap);
+}
+
+.gallery-thumb {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.gallery-thumb:hover {
+  opacity: 0.92;
+}
+
+.gallery-thumb:focus-visible,
+.gallery-rail-button:focus-visible,
+.menu-toggle:focus-visible,
+.site-nav a:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--accent-deep);
+  outline-offset: 3px;
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 920px) {
+  .nav-wrap {
+    position: relative;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.2rem;
+    padding: 0.9rem;
+    background: rgba(255, 250, 246, 0.98);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .site-nav a {
+    min-height: 44px;
+    padding: 0.75rem 0.9rem;
+    border-radius: 14px;
+  }
+
+  .site-nav a.active::after,
+  .site-nav a:hover::after {
+    display: none;
+  }
+
+  .site-nav a.active,
+  .site-nav a:hover {
+    background: rgba(231, 211, 195, 0.45);
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-grid,
+  .split-feature,
+  .contact-grid,
+  .two-column-intro,
+  .two-column-story,
+  .footer-grid,
+  .review-card {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-stack {
+    min-height: 28rem;
+  }
+
+  .real-photo-frame,
+  .portrait-photo-frame {
+    min-height: 24rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: min(100% - 1rem, 1280px);
+  }
+
+  .hero-copy h1,
+  .page-hero h1 {
+    font-size: clamp(2.7rem, 11vw, 4rem);
+    line-height: 0.98;
+  }
+
+  .section h2,
+  .feature-copy h2,
+  .note-panel h2,
+  .contact-panel h2 {
+    font-size: clamp(1.95rem, 8vw, 2.8rem);
+  }
+
+  .button-row,
+  .section-actions {
+    width: 100%;
+  }
+
+  .button-row .btn,
+  .section-actions .btn {
+    width: 100%;
+  }
+
+  .review-card,
+  .contact-form,
+  .contact-panel,
+  .note-panel,
+  .story-panel {
+    padding: 1.15rem;
+  }
+}
