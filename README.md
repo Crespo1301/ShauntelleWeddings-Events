@@ -61,3 +61,27 @@ Because this is a static site, you can host it with GitHub Pages.
 2. Finalize the About page voice.
 3. Wire the form to email.
 4. Push to the GitHub repo and preview live.
+
+
+---
+
+## 15. Thank-You Page
+
+A dedicated `thank-you.html` page is included for successful form submissions.
+
+### Current behavior
+The contact form `_next` hidden input is configured to redirect to:
+
+```text
+https://shauntelleweddingsandevents.com/thank-you.html
+```
+
+### To edit the thank-you experience
+Edit:
+- `thank-you.html`
+
+Safe things to update:
+- heading text
+- supporting copy
+- follow-up instructions
+- button labels and destinations
