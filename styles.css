@@ -1026,7 +1026,7 @@ body.nav-open {
 
 /* KEY FIX: remove fake spacing */
 .service-card-copy h3 {
-  margin-bottom: 0;
+  margin-bottom: auto;
   line-height: 1.2;
 }
 
