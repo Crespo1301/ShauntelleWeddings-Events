@@ -68,56 +68,64 @@
         Example:
         action="https://formspree.io/f/abcd1234"
       -->
-      <form
-        class="contact-form"
-        action="https://formspree.io/f/xykbyyvj"
-        method="post"
-        accept-charset="UTF-8"
-      >
-        <!-- Change the subject line sent to the inbox -->
-        <input type="hidden" name="_subject" value="New Shauntelle Weddings &amp; Events inquiry" />
-          <!-- THIS IS THE IMPORTANT LINE -->
-        <input type="hidden" name="_next" value="https://shauntelleweddingsandevents.com/thank-you.html" />
+    <form
+      class="contact-form"
+      action="https://formspree.io/f/xykbyyvj"
+      method="POST"
+      accept-charset="UTF-8"
+    >
 
-        <input type="text" name="_gotcha" style="display:none" />
+      <!-- Email subject -->
+      <input type="hidden" name="_subject" value="New Shauntelle Weddings &amp; Events inquiry" />
 
-        <!-- rest of your inputs -->
-        <label>
-          Full Name
-          <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
-        </label>
-        <label>
-          Email Address
-          <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
-        </label>
-        <label>
-          Event Type
-          <select name="eventType" required>
-            <option>Wedding</option>
-            <option>Proposal</option>
-            <option>Baby Shower</option>
-            <option>Birthday Celebration</option>
-            <option>Other Event</option>
-          </select>
-        </label>
-        <label>
-          Event Date
-          <input type="text" name="eventDate" placeholder="Month / Year or exact date" autocomplete="off" required />
-        </label>
-        <label>
-          Estimated Guest Count
-          <input type="text" name="guestCount" placeholder="Approximate number of guests" inputmode="numeric" />
-        </label>
-        <label>
-          Tell us about your vision
-          <textarea name="message" rows="6" placeholder="Share your ideas, venue, style, and support needed." required></textarea>
-        </label>
-        <!--
-          EDITING NOTE:
-          Button text can be changed safely without affecting functionality.
-        -->
-        <button class="btn btn-primary" type="submit">Send Inquiry</button>
-      </form>
+      <!-- ✅ PRIMARY REDIRECT -->
+      <input type="hidden" name="_next" value="https://shauntelleweddingsandevents.com/thank-you.html" />
+
+      <!-- ✅ FALLBACK (some Formspree setups use this instead) -->
+      <input type="hidden" name="_redirect" value="https://shauntelleweddingsandevents.com/thank-you.html" />
+
+      <!-- Spam protection -->
+      <input type="text" name="_gotcha" style="display:none" />
+
+      <!-- FORM FIELDS -->
+      <label>
+        Full Name
+        <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
+      </label>
+
+      <label>
+        Email Address
+        <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+      </label>
+
+      <label>
+        Event Type
+        <select name="eventType" required>
+          <option>Wedding</option>
+          <option>Proposal</option>
+          <option>Baby Shower</option>
+          <option>Birthday Celebration</option>
+          <option>Other Event</option>
+        </select>
+      </label>
+
+      <label>
+        Event Date
+        <input type="text" name="eventDate" placeholder="Month / Year or exact date" required />
+      </label>
+
+      <label>
+        Estimated Guest Count
+        <input type="text" name="guestCount" placeholder="Approximate number of guests" />
+      </label>
+
+      <label>
+        Tell us about your vision
+        <textarea name="message" rows="6" placeholder="Share your ideas..." required></textarea>
+      </label>
+
+      <button class="btn btn-primary" type="submit">Send Inquiry</button>
+    </form>
     </div>
   </section>
 
