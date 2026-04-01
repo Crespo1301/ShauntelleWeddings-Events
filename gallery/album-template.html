@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Album Name | Shauntelle Weddings &amp; Events</title>
+    <meta name="description" content="Browse the Album Name photo album from Shauntelle Weddings &amp; Events." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body data-page="gallery">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="container nav-wrap">
+          <a class="brand" href="../../index.html">
+            <span class="brand-mark">S</span>
+            <span>
+              <strong>Shauntelle</strong>
+              <small>Weddings &amp; Events</small>
+            </span>
+          </a>
+
+          <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation menu">
+            Menu
+          </button>
+
+          <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+            <a data-page-link="home" href="../../index.html">Home</a>
+            <a data-page-link="about" href="../../about.html">About</a>
+            <a data-page-link="services" href="../../services.html">Services</a>
+            <a data-page-link="gallery" href="../../gallery.html">Gallery</a>
+            <a data-page-link="reviews" href="../../reviews.html">Reviews</a>
+            <a data-page-link="contact" href="../../contact.html">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-hero page-hero-light">
+          <div class="container hero-wide">
+            <p class="eyebrow">Photo Album</p>
+            <h1>Album Name</h1>
+            <p class="lead">
+              Album introduction goes here. This page is designed to match the main gallery experience.
+            </p>
+            <div class="button-row">
+              <a class="btn btn-secondary" href="../../gallery.html">Back to Main Gallery</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section gallery-page-section">
+          <div class="gallery-rail-shell" data-gallery-rail>
+            <button class="carousel-button gallery-rail-button prev" type="button" aria-label="Previous gallery images" data-gallery-rail-prev>&larr;</button>
+            <div class="gallery-rail-window">
+              <div class="gallery-rail-grid" data-gallery>
+                <!--
+                  ALBUM IMAGE SYSTEM
+                  Duplicate one button block for each new image.
+                  Update:
+                  - data-full
+                  - img src
+                  - alt text
+                  - aria-label
+                -->
+                <button class="gallery-thumb is-active" type="button" data-gallery-thumb data-full="../../assets/gallery/Album-Name/photo-1.jpg" aria-label="Open album photo 1">
+                  <img src="../../assets/gallery/Album-Name/photo-1.jpg" alt="Album photo 1" loading="lazy" decoding="async" />
+                </button>
+                <button class="gallery-thumb" type="button" data-gallery-thumb data-full="../../assets/gallery/Album-Name/photo-2.jpg" aria-label="Open album photo 2">
+                  <img src="../../assets/gallery/Album-Name/photo-2.jpg" alt="Album photo 2" loading="lazy" decoding="async" />
+                </button>
+              </div>
+            </div>
+            <button class="carousel-button gallery-rail-button next" type="button" aria-label="Next gallery images" data-gallery-rail-next>&rarr;</button>
+          </div>
+        </section>
+
+        <div class="lightbox" data-lightbox hidden>
+          <button class="lightbox-close" type="button" aria-label="Close gallery" data-lightbox-close>&times;</button>
+          <button class="lightbox-nav prev" type="button" aria-label="Previous image" data-lightbox-prev>&larr;</button>
+          <div class="lightbox-image-wrap">
+            <img src="../../assets/gallery/Album-Name/photo-1.jpg" alt="Album gallery image" data-lightbox-image />
+          </div>
+          <button class="lightbox-nav next" type="button" aria-label="Next image" data-lightbox-next>&rarr;</button>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div>
+            <a class="brand footer-brand" href="../../index.html">
+              <span>
+                <strong>Shauntelle</strong>
+                <small>Weddings &amp; Events</small>
+              </span>
+            </a>
+            <p class="footer-copy">
+              Elegant wedding coordination and celebration styling for Shasta County and surrounding areas.
+            </p>
+          </div>
+          <div>
+            <p class="footer-label">Explore</p>
+            <a href="../../about.html">About</a>
+            <a href="../../services.html">Services</a>
+            <a href="../../gallery.html">Gallery</a>
+            <a href="../../reviews.html">Reviews</a>
+            <a href="../../contact.html">Contact</a>
+          </div>
+          <div>
+            <p class="footer-label">Connect</p>
+            <a href="tel:5307225676">530-722-5676</a>
+            <a href="mailto:shauntelleweddingsandevents@gmail.com">shauntelleweddingsandevents@gmail.com</a>
+            <span>Serving Shasta County &amp; surrounding areas</span>
+            <div class="social-links">
+              <a href="" aria-label="Instagram profile">Instagram</a>
+              <a href="" aria-label="Facebook profile">Facebook</a>
+              <a href="" aria-label="TikTok profile">TikTok</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>

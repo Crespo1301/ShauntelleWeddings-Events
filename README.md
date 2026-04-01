@@ -85,3 +85,45 @@ Safe things to update:
 - supporting copy
 - follow-up instructions
 - button labels and destinations
+
+
+---
+
+## 16. Photo Albums
+
+The album system is now structured so you can add new event collections quickly.
+
+### Files involved
+- `gallery.html`
+- `gallery/album-template.html`
+- `gallery/Shasta/index.html`
+
+### How to add a new album
+1. Duplicate `gallery/album-template.html`
+2. Create a new folder like `gallery/New-Album/`
+3. Save the duplicated file as `gallery/New-Album/index.html`
+4. Update:
+   - page title
+   - album heading
+   - description
+   - image paths
+   - cover image
+5. Add a matching album card to `gallery.html`
+
+### Folder pattern
+```text
+/gallery/
+  album-template.html
+  /Shasta/
+    index.html
+  /Another-Album/
+    index.html
+```
+
+### Relative path note
+Album pages live two folders down, so they use:
+- `../../styles.css`
+- `../../script.js`
+- `../../index.html`
+
+Do not change those unless the folder structure changes.
