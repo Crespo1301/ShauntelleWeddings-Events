@@ -127,3 +127,11 @@ Album pages live two folders down, so they use:
 - `../../index.html`
 
 Do not change those unless the folder structure changes.
+
+
+### Shared partials in album pages
+Album pages now use the shared site partials as well:
+- `../../partials/header.html`
+- `../../partials/footer.html`
+
+This keeps navigation and footer updates consistent across the main site and all nested album pages.

@@ -61,28 +61,33 @@ function initGalleryRail() {
   const lightboxClose = document.querySelector('[data-lightbox-close]');
   let currentIndex = 0;
   let pageIndex = 0;
+  let autoScrollTimer = null;
 
   function itemsPerPage() {
     if (!windowEl) return 1;
     return window.innerWidth <= 640 ? 2 : 4;
   }
 
+  function maxPage() {
+    return Math.max(0, thumbs.length - itemsPerPage());
+  }
+
   function updateRailPosition() {
     const firstItem = thumbs[0];
     if (!firstItem) return;
     const itemWidth = firstItem.getBoundingClientRect().width;
-    // Read gap from CSS variable or computed style for maintainability
     let gap = 0;
     const railStyles = window.getComputedStyle(rail);
-    // Try to read from CSS variable first, fallback to column-gap or gap
     const cssGap = railStyles.getPropertyValue('--gallery-gap') ||
                    railStyles.getPropertyValue('column-gap') ||
                    railStyles.getPropertyValue('gap');
+
     if (cssGap) {
       gap = parseFloat(cssGap);
     } else {
-      gap = 11.2; // fallback to default if not found
+      gap = 11.2;
     }
+
     rail.style.transform = `translateX(-${pageIndex * (itemWidth + gap)}px)`;
   }
 
@@ -90,15 +95,49 @@ function initGalleryRail() {
     currentIndex = (index + thumbs.length) % thumbs.length;
     thumbs.forEach((thumb, i) => thumb.classList.toggle('is-active', i === currentIndex));
     const img = thumbs[currentIndex].querySelector('img');
+
     if (lightboxImage && img) {
       lightboxImage.src = thumbs[currentIndex].dataset.full || img.getAttribute('src');
       lightboxImage.alt = img.getAttribute('alt') || 'Gallery image';
     }
   }
 
+  function goPrevPage() {
+    const max = maxPage();
+    pageIndex = pageIndex <= 0 ? max : Math.max(0, pageIndex - itemsPerPage());
+    updateRailPosition();
+  }
+
+  function goNextPage() {
+    const max = maxPage();
+    pageIndex = pageIndex >= max ? 0 : Math.min(max, pageIndex + itemsPerPage());
+    updateRailPosition();
+  }
+
+  function stopAutoScroll() {
+    if (autoScrollTimer) {
+      window.clearInterval(autoScrollTimer);
+      autoScrollTimer = null;
+    }
+  }
+
+  function startAutoScroll() {
+    stopAutoScroll();
+
+    // Subtle luxury motion: only auto-scroll when not interacting with the lightbox
+    if (!windowEl || thumbs.length <= itemsPerPage()) return;
+
+    autoScrollTimer = window.setInterval(() => {
+      if (lightbox?.hidden === false) return;
+      goNextPage();
+    }, 4200);
+  }
+
   thumbs.forEach((thumb, index) => {
     thumb.addEventListener('click', () => {
       setActive(index);
+      stopAutoScroll();
+
       if (lightbox) {
         lightbox.hidden = false;
         document.body.classList.add('lightbox-open');
@@ -106,31 +145,38 @@ function initGalleryRail() {
     });
   });
 
-    // Keep the original gallery rail layout, but let the arrows loop.
-    prev?.addEventListener('click', () => {
-      const maxPage = Math.max(0, thumbs.length - itemsPerPage());
-      pageIndex = pageIndex <= 0 ? maxPage : Math.max(0, pageIndex - itemsPerPage());
-      updateRailPosition();
-    });
+  prev?.addEventListener('click', () => {
+    stopAutoScroll();
+    goPrevPage();
+    startAutoScroll();
+  });
 
-    next?.addEventListener('click', () => {
-      const maxPage = Math.max(0, thumbs.length - itemsPerPage());
-      pageIndex = pageIndex >= maxPage ? 0 : Math.min(maxPage, pageIndex + itemsPerPage());
-      updateRailPosition();
-    });
+  next?.addEventListener('click', () => {
+    stopAutoScroll();
+    goNextPage();
+    startAutoScroll();
+  });
+
+  windowEl?.addEventListener('mouseenter', stopAutoScroll);
+  windowEl?.addEventListener('mouseleave', startAutoScroll);
+  windowEl?.addEventListener('focusin', stopAutoScroll);
+  windowEl?.addEventListener('focusout', startAutoScroll);
 
   lightboxPrev?.addEventListener('click', () => setActive(currentIndex - 1));
   lightboxNext?.addEventListener('click', () => setActive(currentIndex + 1));
+
   lightboxClose?.addEventListener('click', () => {
     if (!lightbox) return;
     lightbox.hidden = true;
     document.body.classList.remove('lightbox-open');
+    startAutoScroll();
   });
 
   lightbox?.addEventListener('click', (event) => {
     if (event.target === lightbox) {
       lightbox.hidden = true;
       document.body.classList.remove('lightbox-open');
+      startAutoScroll();
     }
   });
 
@@ -139,15 +185,21 @@ function initGalleryRail() {
       if (event.key === 'Escape') {
         lightbox.hidden = true;
         document.body.classList.remove('lightbox-open');
+        startAutoScroll();
       }
       if (event.key === 'ArrowLeft') setActive(currentIndex - 1);
       if (event.key === 'ArrowRight') setActive(currentIndex + 1);
     }
   });
 
-  window.addEventListener('resize', updateRailPosition);
+  window.addEventListener('resize', () => {
+    updateRailPosition();
+    startAutoScroll();
+  });
+
   setActive(0);
   updateRailPosition();
+  startAutoScroll();
 }
 
 async function initSite() {
