@@ -1350,7 +1350,7 @@ body.nav-open {
 
 :root {
   --gallery-gap: 0.7rem;
-  --gallery-tile-size-desktop: 240px;
+  --gallery-tile-size-desktop: 200px;
   --gallery-tile-size-tablet: 170px;
   --gallery-tile-size-mobile: 135px;
   --gallery-thumb-aspect: 4 / 5;
