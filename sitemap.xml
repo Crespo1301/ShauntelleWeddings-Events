@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://shauntelleweddingsandevents.com/</loc></url>
-  <url><loc>https://shauntelleweddingsandevents.com/about.html</loc></url>
-  <url><loc>https://shauntelleweddingsandevents.com/services.html</loc></url>
-  <url><loc>https://shauntelleweddingsandevents.com/gallery.html</loc></url>
-  <url><loc>https://shauntelleweddingsandevents.com/reviews.html</loc></url>
-  <url><loc>https://shauntelleweddingsandevents.com/contact.html</loc></url>
+
+  <url>
+    <loc>https://shauntelleweddingsandevents.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://shauntelleweddingsandevents.com/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://shauntelleweddingsandevents.com/services.html</loc>
+  </url>
+
+  <url>
+    <loc>https://shauntelleweddingsandevents.com/gallery.html</loc>
+  </url>
+
+  <url>
+    <loc>https://shauntelleweddingsandevents.com/reviews.html</loc>
+  </url>
+
+  <url>
+    <loc>https://shauntelleweddingsandevents.com/contact.html</loc>
+  </url>
+
+  <!-- Optional: include thank-you page (kept for crawl completeness) -->
+  <url>
+    <loc>https://shauntelleweddingsandevents.com/thank-you.html</loc>
+  </url>
+
 </urlset>
