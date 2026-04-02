@@ -1,18 +1,12 @@
-async function includePartials(root = document) {
-  let includeNodes = Array.from(root.querySelectorAll('[data-include]'));
-
-  // Resolve nested partials by continuing until no include placeholders remain.
-  while (includeNodes.length) {
-    await Promise.all(
-      includeNodes.map(async (node) => {
-        const path = node.getAttribute('data-include');
-        const response = await fetch(path);
-        node.outerHTML = await response.text();
-      })
-    );
-
-    includeNodes = Array.from(document.querySelectorAll('[data-include]'));
-  }
+async function includePartials() {
+  const includeNodes = Array.from(document.querySelectorAll('[data-include]'));
+  await Promise.all(
+    includeNodes.map(async (node) => {
+      const path = node.getAttribute('data-include');
+      const response = await fetch(path);
+      node.outerHTML = await response.text();
+    })
+  );
 }
 
 function initNavigation() {
@@ -54,7 +48,6 @@ function initNavigation() {
 
 function initGalleryRail() {
   const rail = document.querySelector('[data-gallery]');
-  
   if (!rail) return;
 
   const windowEl = document.querySelector('.gallery-rail-window');
