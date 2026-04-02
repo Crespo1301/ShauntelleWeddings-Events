@@ -54,14 +54,7 @@ function initNavigation() {
 
 function initGalleryRail() {
   const rail = document.querySelector('[data-gallery]');
-  function isMobileGallery() {
-    return window.innerWidth <= 920;
-  }
-
-  if (isMobileGallery()) {
-    prev?.setAttribute('hidden', '');
-    next?.setAttribute('hidden', '');
-  }
+  
   if (!rail) return;
 
   const windowEl = document.querySelector('.gallery-rail-window');
