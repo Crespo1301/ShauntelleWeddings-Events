@@ -1461,3 +1461,15 @@ body.nav-open {
     grid-auto-columns: minmax(var(--gallery-tile-size-mobile), 1fr);
   }
 }
+
+
+/* Shared social icons band wrapper */
+.social-links-band-wrap .social-links {
+  justify-content: flex-end;
+}
+
+@media (max-width: 920px) {
+  .social-links-band-wrap .social-links {
+    justify-content: flex-start;
+  }
+}
