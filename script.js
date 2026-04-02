@@ -1,4 +1,3 @@
-
 async function includePartials() {
   const includeNodes = Array.from(document.querySelectorAll('[data-include]'));
   await Promise.all(
@@ -15,12 +14,14 @@ function initNavigation() {
   const siteNav = document.querySelector('.site-nav');
 
   if (menuToggle && siteNav) {
+    // Mobile nav toggle with body lock for cleaner small-screen behavior
     menuToggle.addEventListener('click', () => {
       const isOpen = siteNav.classList.toggle('open');
       menuToggle.setAttribute('aria-expanded', String(isOpen));
       document.body.classList.toggle('nav-open', isOpen);
     });
 
+    // Close the menu after a navigation selection on mobile
     siteNav.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
         siteNav.classList.remove('open');
@@ -29,6 +30,7 @@ function initNavigation() {
       });
     });
 
+    // Escape key support for accessibility
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         siteNav.classList.remove('open');
@@ -63,13 +65,6 @@ function initGalleryRail() {
   let isJumping = false;
 
   const originalThumbs = Array.from(rail.querySelectorAll('[data-gallery-thumb]'));
-  originalThumbs.forEach((thumb, index) => {
-    thumb.dataset.originalIndex = String(index);
-  });
-
-  function isMobileGallery() {
-    return window.innerWidth <= 920;
-  }
 
   function getRowsPerPage() {
     return 2;
@@ -79,7 +74,6 @@ function initGalleryRail() {
     if (!windowEl) return 1;
     const firstItem = rail.querySelector('[data-gallery-thumb]');
     if (!firstItem) return 1;
-
     const itemRect = firstItem.getBoundingClientRect();
     const railStyles = window.getComputedStyle(rail);
     const cssGap = railStyles.getPropertyValue('--gallery-gap') ||
@@ -87,7 +81,6 @@ function initGalleryRail() {
       railStyles.getPropertyValue('gap');
     const gap = cssGap ? parseFloat(cssGap) : 11.2;
     const windowWidth = windowEl.getBoundingClientRect().width;
-
     return Math.max(1, Math.floor((windowWidth + gap) / (itemRect.width + gap)));
   }
 
@@ -103,54 +96,47 @@ function initGalleryRail() {
     return cssGap ? parseFloat(cssGap) : 11.2;
   }
 
-  function getAllThumbs() {
-    return Array.from(rail.querySelectorAll('[data-gallery-thumb]'));
-  }
-
   function clearClones() {
     rail.querySelectorAll('[data-gallery-clone="true"]').forEach((node) => node.remove());
   }
 
-  function setLightboxImage(index) {
-    const sourceThumb = originalThumbs[(index + originalThumbs.length) % originalThumbs.length];
-    if (!sourceThumb) return;
+  function buildInfiniteRail() {
+    clearClones();
 
-    currentIndex = (index + originalThumbs.length) % originalThumbs.length;
-    const img = sourceThumb.querySelector('img');
-
-    getAllThumbs().forEach((thumb) => {
-      const originalIndex = Number(thumb.dataset.originalIndex);
-      thumb.classList.toggle('is-active', originalIndex === currentIndex);
-    });
-
-    if (lightboxImage && img) {
-      lightboxImage.src = sourceThumb.dataset.full || img.getAttribute('src');
-      lightboxImage.alt = img.getAttribute('alt') || 'Gallery image';
-    }
-  }
-
-  function attachThumbHandlers() {
-    getAllThumbs().forEach((thumb) => {
-      thumb.onclick = () => {
-        const originalIndex = Number(thumb.dataset.originalIndex);
-        setLightboxImage(originalIndex);
-        stopAutoScroll();
-
-        if (lightbox) {
-          lightbox.hidden = false;
-          document.body.classList.add('lightbox-open');
-        }
-      };
-    });
-  }
-
-  function updateRailPosition(useTransition = true) {
-    if (isMobileGallery()) {
-      rail.style.transition = 'none';
-      rail.style.transform = 'none';
+    const itemsPerPage = getItemsPerPage();
+    if (originalThumbs.length <= itemsPerPage) {
+      pageIndex = 0;
       return;
     }
 
+    const prependCount = Math.min(itemsPerPage, originalThumbs.length);
+    const appendCount = Math.min(itemsPerPage, originalThumbs.length);
+
+    // Clone the last visible set to the front
+    originalThumbs.slice(-prependCount).forEach((thumb) => {
+      const clone = thumb.cloneNode(true);
+      clone.dataset.galleryClone = 'true';
+      clone.dataset.originalIndex = thumb.dataset.originalIndex || '';
+      rail.insertBefore(clone, rail.firstChild);
+    });
+
+    // Clone the first visible set to the end
+    originalThumbs.slice(0, appendCount).forEach((thumb) => {
+      const clone = thumb.cloneNode(true);
+      clone.dataset.galleryClone = 'true';
+      clone.dataset.originalIndex = thumb.dataset.originalIndex || '';
+      rail.appendChild(clone);
+    });
+
+    // Start on the first real page after the prepended clones
+    pageIndex = getColumnsPerPage();
+  }
+
+  function getAllThumbs() {
+    return Array.from(rail.querySelectorAll('[data-gallery-thumb]'));
+  }
+
+  function updateRailPosition(useTransition = true) {
     const thumbs = getAllThumbs();
     const firstItem = thumbs[0];
     if (!firstItem) return;
@@ -165,54 +151,50 @@ function initGalleryRail() {
     rail.style.transform = `translateX(-${pageIndex * (itemWidth + gap)}px)`;
   }
 
-  function buildDesktopInfiniteRail() {
-    clearClones();
+  function setLightboxImage(index) {
+    const sourceThumb = originalThumbs[(index + originalThumbs.length) % originalThumbs.length];
+    if (!sourceThumb) return;
+    const img = sourceThumb.querySelector('img');
+    currentIndex = (index + originalThumbs.length) % originalThumbs.length;
 
-    if (isMobileGallery()) {
-      pageIndex = 0;
-      updateRailPosition(false);
-      return;
-    }
-
-    const itemsPerPage = getItemsPerPage();
-    if (originalThumbs.length <= itemsPerPage) {
-      pageIndex = 0;
-      updateRailPosition(false);
-      return;
-    }
-
-    const cloneCount = Math.min(itemsPerPage, originalThumbs.length);
-
-    originalThumbs.slice(-cloneCount).forEach((thumb) => {
-      const clone = thumb.cloneNode(true);
-      clone.dataset.galleryClone = 'true';
-      clone.dataset.originalIndex = thumb.dataset.originalIndex || '';
-      rail.insertBefore(clone, rail.firstChild);
+    getAllThumbs().forEach((thumb) => {
+      const originalIndex = Number(thumb.dataset.originalIndex);
+      thumb.classList.toggle('is-active', originalIndex === currentIndex);
     });
 
-    originalThumbs.slice(0, cloneCount).forEach((thumb) => {
-      const clone = thumb.cloneNode(true);
-      clone.dataset.galleryClone = 'true';
-      clone.dataset.originalIndex = thumb.dataset.originalIndex || '';
-      rail.appendChild(clone);
-    });
+    if (lightboxImage && img) {
+      lightboxImage.src = sourceThumb.dataset.full || img.getAttribute('src');
+      lightboxImage.alt = img.getAttribute('alt') || 'Gallery image';
+    }
+  }
 
-    pageIndex = getColumnsPerPage();
-    updateRailPosition(false);
+  function attachThumbHandlers() {
+    getAllThumbs().forEach((thumb) => {
+      thumb.addEventListener('click', () => {
+        const originalIndex = Number(thumb.dataset.originalIndex);
+        setLightboxImage(originalIndex);
+        stopAutoScroll();
+
+        if (lightbox) {
+          lightbox.hidden = false;
+          document.body.classList.add('lightbox-open');
+        }
+      });
+    });
   }
 
   function jumpIfNeeded() {
-    if (isMobileGallery()) return;
-
     const itemsPerPage = getItemsPerPage();
     const columnsPerPage = getColumnsPerPage();
     const maxRealPageIndex = columnsPerPage + Math.max(0, originalThumbs.length - itemsPerPage);
 
     if (pageIndex < columnsPerPage) {
+      // Jump from prepended clones to the matching real page
       pageIndex = maxRealPageIndex;
       isJumping = true;
       updateRailPosition(false);
     } else if (pageIndex > maxRealPageIndex) {
+      // Jump from appended clones back to the first real page
       pageIndex = columnsPerPage;
       isJumping = true;
       updateRailPosition(false);
@@ -220,13 +202,11 @@ function initGalleryRail() {
   }
 
   function goPrevPage() {
-    if (isMobileGallery()) return;
     pageIndex -= getColumnsPerPage();
     updateRailPosition(true);
   }
 
   function goNextPage() {
-    if (isMobileGallery()) return;
     pageIndex += getColumnsPerPage();
     updateRailPosition(true);
   }
@@ -241,7 +221,6 @@ function initGalleryRail() {
   function startAutoScroll() {
     stopAutoScroll();
 
-    if (isMobileGallery()) return;
     if (!windowEl || originalThumbs.length <= getItemsPerPage()) return;
 
     autoScrollTimer = window.setInterval(() => {
@@ -250,13 +229,16 @@ function initGalleryRail() {
     }, 4200);
   }
 
-  function setupGalleryMode() {
-    clearClones();
-    attachThumbHandlers();
-    buildDesktopInfiniteRail();
-    setLightboxImage(currentIndex);
-    startAutoScroll();
-  }
+  // Preserve original indexes so clones can still map to the real image data
+  originalThumbs.forEach((thumb, index) => {
+    thumb.dataset.originalIndex = String(index);
+  });
+
+  buildInfiniteRail();
+  attachThumbHandlers();
+  setLightboxImage(0);
+  updateRailPosition(false);
+  startAutoScroll();
 
   prev?.addEventListener('click', () => {
     stopAutoScroll();
@@ -279,18 +261,10 @@ function initGalleryRail() {
     jumpIfNeeded();
   });
 
-  windowEl?.addEventListener('mouseenter', () => {
-    if (!isMobileGallery()) stopAutoScroll();
-  });
-  windowEl?.addEventListener('mouseleave', () => {
-    if (!isMobileGallery()) startAutoScroll();
-  });
-  windowEl?.addEventListener('focusin', () => {
-    if (!isMobileGallery()) stopAutoScroll();
-  });
-  windowEl?.addEventListener('focusout', () => {
-    if (!isMobileGallery()) startAutoScroll();
-  });
+  windowEl?.addEventListener('mouseenter', stopAutoScroll);
+  windowEl?.addEventListener('mouseleave', startAutoScroll);
+  windowEl?.addEventListener('focusin', stopAutoScroll);
+  windowEl?.addEventListener('focusout', startAutoScroll);
 
   lightboxPrev?.addEventListener('click', () => setLightboxImage(currentIndex - 1));
   lightboxNext?.addEventListener('click', () => setLightboxImage(currentIndex + 1));
@@ -322,17 +296,13 @@ function initGalleryRail() {
     }
   });
 
-  let resizeTimer = null;
   window.addEventListener('resize', () => {
-    window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(() => {
-      stopAutoScroll();
-      setupGalleryMode();
-    }, 120);
+    stopAutoScroll();
+    buildInfiniteRail();
+    attachThumbHandlers();
+    updateRailPosition(false);
+    startAutoScroll();
   });
-
-  setLightboxImage(0);
-  setupGalleryMode();
 }
 
 async function initSite() {
