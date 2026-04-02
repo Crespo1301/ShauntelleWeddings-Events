@@ -818,8 +818,8 @@ img {
 .gallery-rail-grid {
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(2, minmax(240px, 1fr));
-  grid-auto-columns: minmax(240px, 1fr);
+  grid-template-rows: repeat(2, minmax(480px, 1fr));
+  grid-auto-columns: minmax(480px, 1fr);
   gap: 0.7rem;
   transition: transform 0.35s ease;
   will-change: transform;
@@ -838,7 +838,7 @@ img {
 .gallery-thumb img {
   width: 100%;
   height: 100%;
-  min-height: 240px;
+  min-height: 360px;
   object-fit: cover;
   display: block;
 }
@@ -1252,6 +1252,218 @@ body.nav-open {
 
 
 /* ==================================================
+   Gallery square thumbnails + tightened album system
+   ================================================== */
+
+/* Keep the two-row gallery layout while using square image tiles */
+.gallery-rail-grid {
+  grid-template-rows: repeat(2, minmax(180px, 1fr));
+  grid-auto-columns: minmax(180px, 1fr);
+}
+
+.gallery-thumb img {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Footer / album social icon buttons */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+}
+
+.social-icon-button {
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.9rem;
+  background: #1f2f4a;
+  color: #eef4ff;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+}
+
+.social-icon-button:hover {
+  transform: translateY(-1px);
+  background: #f0e1d6;
+}
+
+.social-icon-button svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0.7;
+}
+
+/* Capitalization polish for album cards and labels */
+.album-card-label,
+.footer-label,
+.eyebrow {
+  text-transform: uppercase;
+}
+
+@media (max-width: 920px) {
+  .gallery-rail-grid {
+    grid-template-rows: repeat(2, minmax(160px, 1fr));
+    grid-auto-columns: minmax(160px, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-rail-grid {
+    grid-template-rows: repeat(2, minmax(140px, 1fr));
+    grid-auto-columns: minmax(140px, 1fr);
+  }
+
+  .social-icon-button {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+}
+
+/* ==================================================
+   Gallery system overrides
+   Consolidated in one place to avoid repeated selectors.
+   Edit these variables to control gallery sizing.
+   ================================================== */
+
+:root {
+  --gallery-gap: 0.7rem;
+  --gallery-tile-size-desktop: 200px;
+  --gallery-tile-size-tablet: 170px;
+  --gallery-tile-size-mobile: 135px;
+  --gallery-thumb-aspect: 4 / 5;
+}
+
+/* Main gallery and album rails */
+.gallery-page-section {
+  padding-top: 1rem;
+}
+
+.gallery-rail-shell {
+  width: min(100%, calc(100vw - 1rem));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.gallery-rail-window {
+  overflow: hidden;
+}
+
+.gallery-rail-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, minmax(var(--gallery-tile-size-desktop), 1fr));
+  grid-auto-columns: minmax(var(--gallery-tile-size-desktop), 1fr);
+  gap: var(--gallery-gap);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Keep two visible rows with a luxury editorial feel */
+.gallery-thumb {
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: rgba(255, 250, 246, 0.7);
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.gallery-thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 246, 0.02), rgba(52, 37, 31, 0.16)),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.16), transparent 48%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+}
+
+.gallery-thumb img {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: var(--gallery-thumb-aspect);
+  object-fit: cover;
+  display: block;
+  transform: scale(1);
+  transition: transform 0.45s ease, filter 0.3s ease;
+}
+
+.gallery-thumb:hover::after,
+.gallery-thumb:focus-visible::after {
+  opacity: 1;
+}
+
+.gallery-thumb:hover img,
+.gallery-thumb:focus-visible img {
+  transform: scale(1.04);
+  filter: saturate(1.02);
+}
+
+.gallery-thumb.is-active img {
+  outline: 2px solid var(--accent-deep);
+  outline-offset: -2px;
+}
+
+.gallery-rail-button {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 920px) {
+  .gallery-rail-grid {
+    grid-template-rows: repeat(2, minmax(var(--gallery-tile-size-tablet), 1fr));
+    grid-auto-columns: minmax(var(--gallery-tile-size-tablet), 1fr);
+  }
+
+  .gallery-rail-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-rail-button {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-rail-grid {
+    grid-template-rows: repeat(2, minmax(var(--gallery-tile-size-mobile), 1fr));
+    grid-auto-columns: minmax(var(--gallery-tile-size-mobile), 1fr);
+  }
+}
+
+
+/* ==================================================
    Social band below hero
    ================================================== */
 .social-band-section {
@@ -1286,7 +1498,8 @@ body.nav-open {
 }
 
 /* ==================================================
-   Mobile gallery swipe behavior
+   Mobile gallery swipe mode
+   Keep desktop carousel behavior intact.
    ================================================== */
 @media (max-width: 920px) {
   .social-band {
@@ -1302,7 +1515,6 @@ body.nav-open {
     gap: 0;
   }
 
-  /* Remove page buttons on mobile and let the rail swipe naturally */
   .gallery-rail-button {
     display: none;
   }
@@ -1312,7 +1524,7 @@ body.nav-open {
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding-bottom: 0.2rem;
+    padding-bottom: 0.15rem;
   }
 
   .gallery-rail-window::-webkit-scrollbar {

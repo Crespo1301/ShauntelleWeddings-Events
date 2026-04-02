@@ -248,6 +248,7 @@ function initGalleryRail() {
       if (lightbox?.hidden === false) return;
       goNextPage();
     }, 4200);
+  }, 4200);
   }
 
   function setupGalleryMode() {
