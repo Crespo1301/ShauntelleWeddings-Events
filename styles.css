@@ -1473,3 +1473,36 @@ body.nav-open {
     justify-content: flex-start;
   }
 }
+
+/* Final mobile gallery override */
+@media (max-width: 920px) {
+  .gallery-rail-shell {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .gallery-rail-button,
+  .carousel-button.gallery-rail-button,
+  [data-gallery-rail-prev],
+  [data-gallery-rail-next] {
+    display: none !important;
+  }
+
+  .gallery-rail-window {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.15rem;
+  }
+
+  .gallery-rail-window::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-rail-grid {
+    width: max-content;
+    transform: none !important;
+    transition: none !important;
+  }
+}
