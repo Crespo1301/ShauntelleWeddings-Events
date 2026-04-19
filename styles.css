@@ -1282,3 +1282,42 @@ img {
   .lightbox-nav.prev { left: 1rem; }
   .lightbox-nav.next { right: 1rem; }
 }
+
+/* ==================================================
+   Final split-feature image fix
+   Restores the home/about feature image so it stays
+   visible inside the frame instead of appearing blown out.
+   ================================================== */
+.split-feature .real-photo-frame,
+.split-feature .feature-image.real-photo-frame {
+  position: relative;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.split-feature .real-photo-frame img,
+.split-feature .feature-image.real-photo-frame img {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 920px) {
+  .split-feature .real-photo-frame,
+  .split-feature .feature-image.real-photo-frame {
+    aspect-ratio: 4 / 5;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .split-feature .real-photo-frame,
+  .split-feature .feature-image.real-photo-frame {
+    aspect-ratio: 1 / 1.08;
+  }
+}
