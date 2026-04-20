@@ -1331,3 +1331,14 @@ img {
     height: 55vh;
   }
 }
+
+/* Mobile hero ordering: image first, copy second */
+@media (max-width: 920px) {
+  .hero-grid > .hero-visual {
+    order: -1;
+  }
+
+  .hero-grid > .hero-copy {
+    order: 1;
+  }
+}
