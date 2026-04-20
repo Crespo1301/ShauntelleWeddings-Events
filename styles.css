@@ -100,36 +100,32 @@ img {
   gap: 0.9rem;
 }
 
-.brand strong,
-.brand small {
+.brand-lockup {
+  flex-shrink: 0;
+}
+
+.brand-logo {
   display: block;
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  transform-origin: center left;
+  transition: transform 0.26s ease, opacity 0.26s ease, filter 0.26s ease;
 }
 
-.brand strong {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+.brand-lockup:hover .brand-logo,
+.brand-lockup:focus-visible .brand-logo {
+  transform: translateY(-1px) scale(1.015);
+  opacity: 0.98;
+  filter: saturate(1.03);
 }
 
-.brand small {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--muted);
+.brand-logo-footer {
+  height: 46px;
 }
 
 .brand-mark {
-  width: 2.9rem;
-  height: 2.9rem;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: linear-gradient(145deg, #e8d0c0, #f7efe8);
-  border: 1px solid rgba(126, 87, 80, 0.18);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.6rem;
-  font-weight: 700;
+  display: none;
 }
 
 .site-nav {
