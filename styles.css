@@ -218,22 +218,7 @@ img {
 }
 
 .hero-wide {
-  max-width: 70rem;
-}
-.hero-wide h4 {
-  font-family: "manrope", sans-serif;
-  font-weight: 600 ;
-  font-size: 1.25rem;
-  line-height: 1.1;
-  color: var(--accent-deep);
-  margin: 0.5rem 0 1.5rem;
-}
-.hero-wide h5 {
-  font-family: "manrope", sans-serif;
-  font-weight: 400 ;
-  font-size: 1.25rem;
-  color: var(--muted);
-  margin: 0.5rem 0 0;
+  max-width: 1120px;
 }
 
 .hero-copy h1,
@@ -267,7 +252,7 @@ img {
   font-size: 1.08rem;
   line-height: 1.8;
   color: var(--muted);
-  max-width: 70rem;
+  max-width: 40rem;
 }
 
 .eyebrow,
@@ -499,21 +484,7 @@ img {
 .service-card h3,
 .album-card-body h3,
 .review-head h3 {
-  font-family: "Cormorant Garamond", serif; 
-}
-.album-card-body h4 {
-  font-family: "manrope", sans-serif;
-  font-weight: 400 ;
-  font-size: 1.25rem;
-  color: var(--accent-deep);
-  margin: 0.5rem 0 0;
-}
-.album-card-body h5 {
-  font-family: "manrope", sans-serif;
-  font-weight: 200 ;
-  font-size: 1rem;
-  color: var(--muted);
-  margin: 0.25rem 0 0;
+  font-family: "Cormorant Garamond", serif;
 }
 
 .info-card h3 {
@@ -823,7 +794,7 @@ img {
   width: 3rem;
   height: 3rem;
   border-radius: 0.9rem;
-  background: #ffffff00;
+  background: #1f2f4a;
   color: #715e56;
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow: var(--shadow);
@@ -1285,14 +1256,13 @@ img {
 
 
 
-/* ==================================================
-   Feature story card
-   Replaces the oversized split-feature image section
-   with a framed card layout closer to the homepage hero.
-   ================================================== */
+/* =========================================
+   Feature Story Card
+   ========================================= */
+
 .feature-story-card {
   display: grid;
-  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
   gap: 2rem;
   align-items: center;
   padding: 2rem;
@@ -1308,7 +1278,9 @@ img {
 
 .feature-story-frame {
   position: relative;
-  min-height: 36rem;
+  height: 70vh;          /* 👈 main fix */
+  max-height: 520px;     /* prevents it from getting huge on large screens */
+  min-height: 320px;     /* keeps it usable on small screens */  aspect-ratio: 4 / 5;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: linear-gradient(145deg, #e8d7ca, #f7efe8 55%, #d8b49d);
@@ -1327,7 +1299,7 @@ img {
 }
 
 .feature-story-copy h2 {
-  font-size: clamp(2.9rem, 5vw, 4.8rem);
+  font-size: clamp(2.8rem, 5vw, 4.7rem);
   margin: 0 0 1rem;
   line-height: 0.97;
 }
@@ -1344,7 +1316,8 @@ img {
   }
 
   .feature-story-frame {
-    min-height: 25rem;
+    min-height: 24rem;
+    aspect-ratio: 4 / 5;
   }
 
   .feature-story-copy h2 {
@@ -1353,13 +1326,12 @@ img {
 }
 
 @media (max-width: 640px) {
-  .feature-story-frame {
-    min-height: 21rem;
-  }
-
   .feature-story-card {
     gap: 1.25rem;
     padding: 1rem;
   }
-}
 
+  .feature-story-frame {
+    height: 55vh;
+  }
+}
